@@ -17,9 +17,19 @@ const apiRoutes = require('./api-router.js');
 //Import path
 const path = require('path');
 
+app.use(function(req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+});
+
+
 app.use(bodyPraser.urlencoded({
 	extended: true
 }));
+
+
 
 // Connect to Mongoose and set connection variable
 //var db = mongoose.createConnection('mongodb://localhost/restapi');
@@ -27,7 +37,6 @@ mongoose.connect('mongodb://localhost:27017/restapi', {useNewUrlParser: true});
 
 //Send message for default URL
 app.get('/',function(req, res) {
-	//res.send('hello aniii')
 	app.use(express.static('public'));
 });
 
