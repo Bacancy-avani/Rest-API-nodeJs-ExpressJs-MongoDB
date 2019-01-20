@@ -23,7 +23,6 @@ exports.new = function (req, res) {
     var contact = new Contact();
     contact.name = req.body.name ? req.body.name : contact.name;
     contact.email = req.body.email;
-
     // save the contact and check for errors
     contact.save(function (err) {
         if(err)
