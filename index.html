@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>REST API</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="main.js"></script>
+	</head>
+
+	<body>
+		<form class="center" method="post" accept-charset=utf-8 >
+
+			<div>
+				<label>Contact Detail</label>
+			</div>
+
+			<div>
+				<input type="text" class="textbox" id="user_name" placeholder="Name" />
+			</div>
+
+			<div>
+				<input type="text" class="textbox" id="email_address" placeholder="Email Address" />
+			</div>
+
+			<div>
+				<input type="text" class="textbox" id="contactId" placeholder="Enter id to delete/update cntact" />
+			</div>
+
+			<div>
+				<button type="submit" class="style" name="" id="createContact" onclick="return createContacts();">Insert</button>
+				<button type="submit" class="style" name="" id="updateContact" onclick="return updateContacts();">Update</button>
+				<button type="submit" class="style" name="" id="viewContact" onclick="return getContacts();">View</button>
+				<button type="submit" class="style" name="" id="removeContact" onclick="return removeContacts();">Delete</button>
+			</div>
+
+			<div id="output"></div>
+
+		</form>
+	</body>
+
+</html>
