@@ -2,8 +2,13 @@ function getContacts() {
     $.ajax({
         type : 'GET',
         url:'http://localhost:8080/api/contacts/',
-        complete: function (response) {
-            $('#output').html(response.responseText);
+        success: function (response, status) {
+            $('#output').html(response.data.map(contact => {
+                return `<li data-id="${ contact._id }">
+                <span>${ contact.name }</span>
+                <span>${ contact.email }</span>
+                </li>`;
+            }).join(''));
         },
         error: function () {
             $('#output').html('There was an error!');
@@ -16,8 +21,8 @@ function removeContacts() {
     $.ajax({
         type: "DELETE",
         url: "http://localhost:8080/api/contacts/"+$("#contactId").val(),
-        complete: function(response){
-            $("#output").html(response.responseText);
+        success: function(response, status){
+            $("#output").html(response.message);
         },
         error: function () {
             $('#output').html('There was an error!');
@@ -35,8 +40,8 @@ function createContacts() {
                 email : $("#email_address").val()
         },
 
-        complete: function(response){
-            $('#output').html(response.responseText);
+        success: function(response, staus){
+            $('#output').html(response.message + `<br>` + response.data.name + "  " + response.data.email);
         },
         error: function () {
             $('#output').html('There was an error!');
@@ -56,8 +61,8 @@ function updateContacts() {
                 name : $('#user_name').val(),
                 email : $('#email_address').val()
         },
-        complete: function(response){
-            $("#output").html(response.responseText);
+        success: function(response, staus){
+            $('#output').html(response.message + `<br>` + response.data.name + "  " + response.data.email);
         },
         error: function () {
             $('#output').html('There was an error!');
