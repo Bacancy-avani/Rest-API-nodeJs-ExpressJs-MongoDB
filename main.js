@@ -3,7 +3,7 @@ function getContacts() {
         type : 'GET',
         url:'http://localhost:8080/api/contacts/',
         complete: function (response) {
-            $('#output').html(response.responseText,status);
+            $('#output').html(response.responseText);
         },
         error: function () {
             $('#output').html('There was an error!');
